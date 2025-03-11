@@ -1,0 +1,98 @@
+<!-- 
+    This code is patented.
+    © 2025 Gampa Sai Sasivardhan. All rights reserved.
+    Unauthorized reproduction, distribution, or modification is prohibited.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Vehicle Locator</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AjxzbU5-y19DYauGQRvhTRbNDIZWYuW9T8RV73beGQ9iSpSqWKwGz_VG-W-UEldW' async defer></script>
+    
+</head>
+<body>
+    <div class="cont">
+        <img src="nitw_logo.png" alt="nitw_logo" class="logo">
+        <h1>National Institute of Technology Warangal</h1>
+    </div>
+
+
+
+    <div class="container">
+        <h1>Electronic Vehicle Locator</h1>
+        <div class="coordinates">
+            <p><span id="latitude"></span></p>
+            <p><span id="longitude"></span></p>
+        </div>
+
+        <div class="conto">
+            <div class="eme">
+                <img src="siren.png" alt="Emergency" id="emergencyButton" onclick="showEmergencyPopup()">
+                <h3>Emergency Services</h3>
+            </div>
+    
+            <div class="pdf-link" onclick="EVtimingsPDF()">
+                <img src="chronometer.png" alt="time">
+                <h4>Check EV Timings here</h4>
+            </div>
+        </div>
+
+        <div id="emergencyPopup" class="popup" style="display:none;">
+            <div class="popup-content">
+                <h2>Emergency Service Notice</h2>
+                <p>This service is for emergency purposes only. If pressed unnecessarily, you will be fined up to <b>₹500</b>.</p>
+                <hr>
+                
+                <h2>Requesting to stop at:</h2>
+                <select id="EmergencyDropdown">
+                    <option value="" disabled selected hidden>Select a stop</option>
+                    <option value="Main_Gate">Main Gate</option>
+                    <option value="1K_Hostel">1K Hostel</option>
+                    <option value="1.8K_Hostel">1.8K Hostel</option>
+                    <option value="Ladies_Hostel">Ladies Hostel</option>
+                    <option value="Old_Auditorium">Old Auditorium</option>
+                    <option value="Blocks">Blocks</option>
+                    <option value="Food_Street">Food Street</option>
+                    <option value="Chemical_Department">Chemical Department</option>
+                    <option value="Metallurgy_Department">Metallurgy Department</option>
+                </select>
+                <br>
+                <button onclick="emergencyRequestStop()">Send Request</button>
+                <button onclick="closePopup()">Close</button>
+            </div>
+        </div>
+
+        <div class="request-stop">
+            <h2>Requesting to stop at:</h2>
+            <select id="stopDropdown">
+                <option value="" disabled selected hidden>Select a stop</option>
+                <option value="Main_Gate">Main Gate</option>
+                <option value="1K_Hostel">1K Hostel</option>
+                <option value="1.8K_Hostel">1.8K Hostel</option>
+                <option value="Ladies_Hostel">Ladies Hostel</option>
+                <option value="Old_Auditorium">Old Auditorium</option>
+                <option value="Blocks">Blocks</option>
+                <option value="Food_Street">Food Street</option>
+                <option value="Chemical_Department">Chemical Department</option>
+                <option value="Metallurgy_Department">Metallurgy Department</option>
+            </select>
+            <button onclick="requestStop()">Send Request</button>
+        </div>
+
+        <div id="myMap"></div> 
+
+    </div>
+
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
